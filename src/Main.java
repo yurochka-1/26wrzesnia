@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 public class Main {
@@ -12,8 +13,17 @@ public class Main {
         //wylosuj 50 liczb bez powtorzen
         ArrayList<Integer> wylosowaneLiczbyLista = losujLiczbeBezPowtorzen(50);
         wypisz(wylosowaneLiczbyLista);
+        //wylosuj 30 liczb bez powtorzen ->zbiory
+        //HashSet zbiory - kolekcja, elementy się nie powtarzają nie są indeksowane
     }
-
+    static HashSet<Integer> losujLiczbyBezPowtorzenDoZbioru(int ileLiczb){
+        HashSet<Integer> wylosowaneLiczby = new HashSet<>();
+        Random random = new Random();
+        while (wylosowaneLiczby.size()<ileLiczb){
+            wylosowaneLiczby.add(random.nextInt(100)+1);
+        }
+        return wylosowaneLiczby;
+    }
     static ArrayList<Integer> losujLiczbeBezPowtorzen(int ileLiczb){
         Random random = new Random();
         ArrayList<Integer> wylosowaneLiczby = new ArrayList<>();
