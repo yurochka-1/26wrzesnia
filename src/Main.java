@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -7,10 +8,26 @@ public class Main {
         //wylosuj 10 liczb i zapisz je w tablicy
         int[] wylosowaneLiczby = wylosujLiczbyDoTablicy(10);
         //wypisywanie tablicy
-        wypiszTablice(wylosowaneLiczby);
+        wypisz(wylosowaneLiczby);
+        //wylosuj 50 liczb bez powtorzen
+        ArrayList<Integer> wylosowaneLiczbyLista = losujLiczbeBezPowtorzen(50);
+        wypisz(wylosowaneLiczbyLista);
     }
 
-    static void wypiszTablice(int[] tablica){
+    static ArrayList<Integer> losujLiczbeBezPowtorzen(int ileLiczb){
+        Random random = new Random();
+        ArrayList<Integer> wylosowaneLiczby = new ArrayList<>();
+        for (int i = 0; i < ileLiczb; i++) {
+            int liczba = random.nextInt(100) + 1;
+            if (wylosowaneLiczby.contains(liczba)) {
+                liczba = random.nextInt(100) + 1;
+            }
+            wylosowaneLiczby.add(liczba);
+        }
+        return  wylosowaneLiczby;
+    }
+
+    static void wypisz(int[] tablica){
         System.out.println("Wylosowane liczby:");
         for (int elementTablicy:tablica) {
             //typ nazwaelementu:tablica/kolekcja
@@ -18,6 +35,13 @@ public class Main {
         }
     }
 
+    static void wypisz(ArrayList<Integer> lista){
+        System.out.println("Lista: ");
+        for (int element:lista) {
+            System.out.println(element+", ");
+
+        }
+    }
     static int[] wylosujLiczbyDoTablicy(int ileLiczb)
     {
         Random random = new Random();
